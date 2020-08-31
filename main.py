@@ -1,4 +1,7 @@
 import os
+import nltk
+#sent or word tokenize: Get the information into sentences or words
+from nltk import sent_tokenize,word_tokenize
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 
