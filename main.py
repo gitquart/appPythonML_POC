@@ -53,8 +53,9 @@ def main():
 
     sw=stopwords.words('spanish')
     cv=CountVectorizer(encoding='utf-8',stop_words=sw)
-    cv.fit_transform(ltDocuments).get_shape()
-
+    df=pd.DataFrame()
+    df=cv.fit_transform(ltDocuments).get_shape()
+    print('...')
      
         
     
