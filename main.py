@@ -1,15 +1,15 @@
 import os
 import nltk
+import pandas as pd
 from io import StringIO
 #sent or word tokenize: Get the information into sentences or words
 from nltk import sent_tokenize,word_tokenize
 from nltk.corpus import stopwords
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 from cassandra.query import SimpleStatement
 
-tab='\t'
 pathtohere=os.getcwd()
 #nltk.download('stopwords')
 """
@@ -31,13 +31,10 @@ def main():
     cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
     session = cluster.connect()
     
-    #sw=stopwords.words('spanish')
-    #print(sw)
-    #print('ML with python')
+    
 
     querySt="select * from thesis.tbthesis where period_number=10 ALLOW FILTERING"   
         
-    count=0
     row=''
     statement = SimpleStatement(querySt, fetch_size=1000)
     ltDocuments=[]
@@ -54,12 +51,9 @@ def main():
         thesis=thesis_b.getvalue()
         ltDocuments.append(thesis)
 
-
-    cv=CountVectorizer()
-    bow= cv.fit_transform(ltDocuments)
-    print(cv.vocabulary_)
-    #print(bow.toarray())
-    #print(bow)    
+    sw=stopwords.words('spanish')
+    cv=CountVectorizer(encoding='utf-8',stop_words=sw)
+    cv.fit_transform(ltDocuments).get_shape()
 
      
         
