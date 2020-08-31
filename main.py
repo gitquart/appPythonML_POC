@@ -2,11 +2,12 @@ import os
 import nltk
 #sent or word tokenize: Get the information into sentences or words
 from nltk import sent_tokenize,word_tokenize
+from nltk.corpus import stopwords
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 
 pathtohere=os.getcwd()
-
+#nltk.download('stopwords')
 def main():
     
     cloud_config= {
@@ -20,7 +21,10 @@ def main():
     auth_provider = PlainTextAuthProvider(objCC.cc_user,objCC.cc_pwd)
     
     cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
-    session = cluster.connect()
+    #session = cluster.connect()
+    
+    sw=stopwords.words('spanish')
+    print(sw)
     print('ML with python')
     
 
