@@ -5,6 +5,7 @@ from nltk import sent_tokenize,word_tokenize
 from nltk.corpus import stopwords
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
+from cassandra.query import SimpleStatement
 
 pathtohere=os.getcwd()
 #nltk.download('stopwords')
@@ -26,12 +27,17 @@ def main():
     sw=stopwords.words('spanish')
     print(sw)
     print('ML with python')
+
+    querySt="select * from test.tbthesis where period_number>4 ALLOW FILTERING "   
+        
+    count=0
+    row=''
+    statement = SimpleStatement(querySt, fetch_size=1000)
     
-
-
-
-
-
+    for row in session.execute(statement):
+        count=count+1
+        
+    
 class CassandraConnection():
     cc_user='quartadmin'
     cc_pwd='P@ssw0rd33'
