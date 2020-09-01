@@ -10,6 +10,8 @@ from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 from cassandra.query import SimpleStatement
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 pathtohere=os.getcwd()
 #nltk.download('stopwords')
@@ -39,7 +41,12 @@ def main():
     row=''
     
 
-    if op==1:    
+    if op==1:   
+        print('1.Graph')
+        print('2.WordCloud')
+        op_1=input()
+        op_1=int(op_1)   
+
         ltDoc=StringIO()
     
         #Read and deliver a list of documents
@@ -56,7 +63,7 @@ def main():
             thesis=thesis_b.getvalue()
             #ltDocuments.append(thesis)
             ltDoc.write(thesis+' ')
-        
+
         #Complete words 
         words=word_tokenize(ltDoc.getvalue(),language='spanish')
         #Words without punctuation
@@ -64,18 +71,26 @@ def main():
         for w in words:
             if w.isalpha():
                 words_no_pun.append(w.lower())
-        #Remove stopwords
+            #Remove stopwords
         sw=stopwords.words('spanish')
         clean_words=[]
         for w in words_no_pun:
             if w not in sw:
                 clean_words.append(w)
-
-
-        #Clean words
-        fdist=FreqDist(clean_words)
         
-        fdist.plot(30)
+    
+        if op_1==1:
+
+            #Clean words
+            fdist=FreqDist(clean_words)
+            fdist.plot(30)
+
+        if op_1==2: 
+            wordcloud=WordCloud().generate(clean_words)
+            plt.figure(figsize=(12,12))
+            plt.imshow(wordcloud)
+            plt.axis('off')
+            plt.show()
         
 
     if op==2:
@@ -93,8 +108,8 @@ def main():
                     thesis_b.write(str(col)+' ')
             thesis=''
             thesis=thesis_b.getvalue()
-            #ltDocuments.append(thesis)
-            ltDoc.write(thesis+' ')
+            ltDocuments.append(thesis)
+            
 
     
         sw=stopwords.words('spanish')
