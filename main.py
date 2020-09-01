@@ -51,6 +51,7 @@ def main():
     
         #Read and deliver a list of documents
         statement = SimpleStatement(querySt, fetch_size=1000)
+        print('Getting data from datastax...')
         for row in session.execute(statement):
             thesis_b=StringIO()
             for col in row:
@@ -63,7 +64,9 @@ def main():
             thesis=thesis_b.getvalue()
             #ltDocuments.append(thesis)
             ltDoc.write(thesis+' ')
-
+            
+            
+        print('Cleaning data...')
         #Complete words 
         words=word_tokenize(ltDoc.getvalue(),language='spanish')
         #Words without punctuation
@@ -86,7 +89,9 @@ def main():
             fdist.plot(30)
 
         if op_1==2: 
-            wordcloud=WordCloud().generate(clean_words)
+            print('World Cloud process...')
+            fdist=FreqDist(clean_words)
+            wordcloud=WordCloud().generate_from_frequencies(fdist)
             plt.figure(figsize=(12,12))
             plt.imshow(wordcloud)
             plt.axis('off')
