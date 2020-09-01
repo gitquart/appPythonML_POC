@@ -72,9 +72,10 @@ def main():
                 clean_words.append(w)
 
 
-
+        #Clean words
         fdist=FreqDist(clean_words)
-        print(fdist.most_common(20))
+        
+        fdist.plot(30)
         
 
     if op==2:
