@@ -99,7 +99,13 @@ def main():
         
 
     if op==2:
-    
+        print('Building matriz')
+        print('1.Vectorize')
+        print('2.Get TF-IDF')
+        op_1=input()
+        op_1=int(op_1)  
+
+        
         ltDocuments=[]
         #Read and deliver a list of documents
         statement = SimpleStatement(querySt, fetch_size=1000)
@@ -114,13 +120,27 @@ def main():
             thesis=''
             thesis=thesis_b.getvalue()
             ltDocuments.append(thesis)
-            
 
-    
-        sw=stopwords.words('spanish')
-        cv=CountVectorizer(encoding='utf-8',stop_words=sw)
-        df=pd.DataFrame()
-        df=cv.fit_transform(ltDocuments).get_shape()
+        sw=stopwords.words('spanish')    
+            
+        if op_1==1:
+            print('Vectorizing...')
+            
+            cv=CountVectorizer(encoding='utf-8',stop_words=sw)
+            df=pd.DataFrame()
+            df=cv.fit_transform(ltDocuments).get_shape()
+            print('--Información de la matriz--')
+            print('Filas (tesis): ',str(df[0]))
+            print('Columnas (words): ',str(df[1]))
+        if op_1==2:
+            print('TF-IDF...')
+            vectorizer=TfidfVectorizer(norm=None)
+            df=pd.DataFrame()
+            df= vectorizer.fit_transform(ltDocuments)
+            print(vectorizer.get_feature_names())
+
+
+
     
 
     print('...End...')   
