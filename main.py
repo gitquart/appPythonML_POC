@@ -138,10 +138,7 @@ def main():
             df=pd.DataFrame()
             df= vectorizer.fit_transform(ltDocuments)
             
-
-
-
-    
+            
 
     print('...End...')   
     
