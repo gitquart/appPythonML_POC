@@ -122,19 +122,22 @@ def main():
             ltDocuments.append(thesis)
 
         sw=stopwords.words('spanish')    
+        cv=CountVectorizer(encoding='utf-8',stop_words=sw)
+        #Here in 'df' , we have all the information into a matriz of rows(thesis) and columns (terms)
+        
             
         if op_1==1:
             print('Vectorizing...')
-            
-            cv=CountVectorizer(encoding='utf-8',stop_words=sw)
+            print('--Información de la matriz (rows,cols)--')
             df=cv.fit_transform(ltDocuments)
-            print('--Información de la matriz--')
             print(df.shape)
         if op_1==2:
-            print('TF-IDF...')
-            vectorizer=TfidfVectorizer()
-            df=pd.DataFrame()
-            df= vectorizer.fit_transform(ltDocuments)
+            print('TF-IDF...') 
+            #Process to get the TF-IDF
+            tfidf_vectorizer=TfidfVectorizer(use_idf=True)
+            tfidf_vectorizer_vectors=tfidf_vectorizer.fit_transform(ltDocuments) 
+            print(tfidf_vectorizer_vectors)
+           
             
             
 
