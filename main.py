@@ -134,10 +134,10 @@ def main():
             print('Columnas (words): ',str(df[1]))
         if op_1==2:
             print('TF-IDF...')
-            vectorizer=TfidfVectorizer(norm=None)
+            vectorizer=TfidfVectorizer()
             df=pd.DataFrame()
             df= vectorizer.fit_transform(ltDocuments)
-            print(vectorizer.get_feature_names())
+            
 
 
 
