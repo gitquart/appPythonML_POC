@@ -127,11 +127,9 @@ def main():
             print('Vectorizing...')
             
             cv=CountVectorizer(encoding='utf-8',stop_words=sw)
-            df=pd.DataFrame()
-            df=cv.fit_transform(ltDocuments).get_shape()
+            df=cv.fit_transform(ltDocuments)
             print('--Información de la matriz--')
-            print('Filas (tesis): ',str(df[0]))
-            print('Columnas (words): ',str(df[1]))
+            print(df.shape)
         if op_1==2:
             print('TF-IDF...')
             vectorizer=TfidfVectorizer()
