@@ -129,8 +129,13 @@ def main():
         if op_1==1:
             print('Vectorizing...')
             print('--Información de la matriz (rows,cols)--')
-            df=cv.fit_transform(ltDocuments)
-            print(df.shape)
+            vector=cv.fit_transform(ltDocuments)
+            dataFrame=pd.DataFrame()
+            dataFrame=vector
+            print(dataFrame.shape)
+           
+            
+
         if op_1==2:
             print('TF-IDF...') 
             #Process to get the TF-IDF
