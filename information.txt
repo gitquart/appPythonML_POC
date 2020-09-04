@@ -6,3 +6,6 @@ Some conclusions:
 2.3) The rows can be each document, sentence or even the word it self, which will turn into a word vs word matrix.
 3)The base is a matrix which can turn into different measures: TD-IDF for example
 4)TD-IDF seems to be the base for LSA
+
+Principal topics for this project:
+-NLP, LSA, PCA, TD-IDF, Vectors.
