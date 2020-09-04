@@ -8,5 +8,12 @@ Some conclusions:
 4)TD-IDF seems to be the base for LSA
 
 Principal topics for this project:
--NLP, LSA, PCA, TD-IDF, Vectors.
+-NLP, LSA, PCA, TD-IDF, Space Vector Model, EDA (Exploratory Data Analysis)
 -NLP techniques (there are more...) :Sentiment analysis, Topic modeling and Text Generation
+
+Modelo principal
+
+text_content
+heading
+subject
+type_of_thesis

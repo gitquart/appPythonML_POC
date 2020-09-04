@@ -18,6 +18,10 @@ pathtohere=os.getcwd()
 #nltk.download('punkt')
 """
    Start ML with 10th period
+   Hacer en otro código :
+   -Obtener Término frecuencia y TF IDF con los nuevos campos
+   -Obtener top 100, top 50
+
 """
 def main():
     print('Machine learning program.')
