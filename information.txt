@@ -8,4 +8,4 @@ Some conclusions:
 4)TD-IDF seems to be the base for LSA
 
 Principal topics for this project:
--NLP, LSA, PCA, TD-IDF, Vectors.
+-NLP, LSA, PCA, TD-IDF, Vectors, Sentiment analysis, Topic modeling
