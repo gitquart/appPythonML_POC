@@ -9,4 +9,4 @@ Some conclusions:
 
 Principal topics for this project:
 -NLP, LSA, PCA, TD-IDF, Vectors.
--NLP :Sentiment analysis, Topic modeling and Text Generation
+-NLP techniques (there are more...) :Sentiment analysis, Topic modeling and Text Generation
